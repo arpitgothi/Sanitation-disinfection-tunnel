@@ -1,32 +1,30 @@
-/*Sanitation Tunnel*/
- 
-int relayPin = 10;                // choose the pin for the Relay Pin
+int relayPin = 11;                
 
-int inputPin = 2;               // choose the input pin (for PIR sensor)
-int inputPin2 = 3;               // choose the input pin (for PIR sensor 02)
+int inputPin = 5;           
+int inputPin2 = 6;             
 
-int pirState = LOW;             // at start, assuming no motion detected
-int val = 0;                    // variable for reading the pin status
-int val2 = 0;                    // variable for reading the pin status
+int pirState = LOW;           
+int val = 0;                   
+int val2 = 0;                 
 
  
 void setup() {
-  pinMode(relayPin, OUTPUT);      // declare Relay as output
-  pinMode(inputPin, INPUT);     // declare sensor as input
+  pinMode(relayPin, OUTPUT);     
+  pinMode(inputPin, INPUT);   
   pinMode(inputPin2, INPUT);  
   Serial.begin(9600);
 }
  
 void loop(){
-  val = digitalRead(inputPin);  // read input value
-  val2 = digitalRead(inputPin2);  // read input value
-  if (val == HIGH || val2 == HIGH) {            // check if the input is HIGH
-    digitalWrite(relayPin, HIGH);  // turn Relay ON
+  val = digitalRead(inputPin);  
+  val2 = digitalRead(inputPin2);
+  if (val == HIGH || val2 == HIGH) {         
+    digitalWrite(relayPin, HIGH);
     if (pirState == LOW) {
       // turned on
       Serial.println("Motion detected!");
-      // 15 sec delay
-      delay(15000);
+      // 16 sec delay
+      delay(16000);
       pirState = HIGH;
     }
   } else {
